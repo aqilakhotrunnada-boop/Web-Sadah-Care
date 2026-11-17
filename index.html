@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SadahCare - Cek Airmu</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+  body { background: #f0f8ff; color: #333; }
+  header { background: #0097a7; color: white; padding: 20px; text-align: center; }
+  header h1 { font-size: 32px; }
+  header p { margin-top: 5px; opacity: 0.9; }
+  nav { background: white; padding: 12px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+  nav a { margin: 0 15px; text-decoration: none; color: #0097a7; font-weight: bold; }
+  .hero { text-align: center; padding: 50px 20px; background: white; margin: 20px; border-radius: 15px; }
+  .hero h2 { font-size: 28px; color: #00796b; margin-bottom: 10px; }
+  .hero p { color: #666; margin-bottom: 20px; }
+  .btn { background: #0097a7; color: white; padding: 12px 25px; border: none; border-radius: 25px; font-size: 16px; cursor: pointer; }
+  .btn:hover { background: #00796b; }
+  .container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; padding: 20px; }
+  .card { background: white; width: 280px; padding: 20px; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
+  .card h3 { color: #0097a7; margin-bottom: 10px; }
+  .card p { font-size: 14px; color: #666; margin-bottom: 15px; }
+  .cek-box { background: white; max-width: 500px; margin: 20px auto; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+  .cek-box select, .cek-box input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc; }
+  #hasil { margin-top: 15px; font-weight: bold; color: #00796b; }
+  footer { text-align: center; padding: 20px; color: #888; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>💧 SadahCare</h1>
+  <p>Cek Airmu - Air Bersih, Hidup Sehat</p>
+</header>
+
+<nav>
+  <a href="#">Beranda</a>
+  <a href="#cek">Cek Air</a>
+  <a href="#edukasi">Edukasi</a>
+  <a href="#kontak">Kontak</a>
+</nav>
+
+<div class="hero">
+  <h2>Air Kamu Aman Nggak?</h2>
+  <p>Cek kualitas air di rumahmu dengan cepat dan mudah. Jangan sampai air keruh bikin sakit.</p>
+  <a href="#cek"><button class="btn">Cek Air Sekarang</button></a>
+</div>
+
+<div class="container" id="edukasi">
+  <div class="card">
+    <h3>👁️ Cek Warna</h3>
+    <p>Air yang sehat harus bening, tidak berwarna, dan tidak keruh.</p>
+  </div>
+  <div class="card">
+    <h3>👃 Cek Bau</h3>
+    <p>Air yang sehat tidak berbau. Kalau bau besi atau bau got, berarti tercemar.</p>
+  </div>
+  <div class="card">
+    <h3>👅 Cek Rasa</h3>
+    <p>Air yang sehat tidak berasa. Kalau rasanya asin atau pahit, jangan diminum.</p>
+  </div>
+</div>
+
+<div class="cek-box" id="cek">
+  <h2>Cek Airmu Disini</h2>
+  <p>Pilih kondisi air di rumahmu:</p>
+  <select id="warna">
+    <option value="">-- Warna Air --</option>
+    <option value="bening">Bening / Jernih</option>
+    <option value="keruh">Keruh / Kekuningan</option>
+    <option value="coklat">Coklat / Kehitaman</option>
+  </select>
+  <select id="bau">
+    <option value="">-- Bau Air --</option>
+    <option value="tidak">Tidak Berbau</option>
+    <option value="bau">Berbau</option>
+  </select>
+  <button class="btn" onclick="cekAir()">Lihat Hasil</button>
+  <p id="hasil"></p>
+</div>
+
+<footer id="kontak">
+  <p>© 2026 SadahCare - Dibuat oleh Aqila Khotrun Nada</p>
+  <p>Website Prototype untuk Edukasi Air Bersih</p>
+</footer>
+
+<script>
+function cekAir() {
+  var warna = document.getElementById("warna").value;
+  var bau = document.getElementById("bau").value;
+  var hasil = document.getElementById("hasil");
+  if (warna === "" || bau === "") {
+    hasil.innerText = "Pilih dulu warna dan baunya ya!";
+    hasil.style.color = "red";
+  } else if (warna === "bening" && bau === "tidak") {
+    hasil.innerText = "✅ Air kamu kemungkinan AMAN. Tetap rebus sebelum diminum ya!";
+    hasil.style.color = "green";
+  } else if (warna === "keruh" || bau === "bau") {
+    hasil.innerText = "⚠️ Hati-hati! Air kamu kemungkinan TERCEMAR. Jangan langsung diminum, saring dan rebus dulu.";
+    hasil.style.color = "orange";
+  } else {
+    hasil.innerText = "🚨 BAHAYA! Air kamu tidak layak minum. Segera lapor ke RT / Puskesmas.";
+    hasil.style.color = "red";
+  }
+}
+</script>
+
+</body>
+</html>
